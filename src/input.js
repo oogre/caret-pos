@@ -18,6 +18,14 @@ const createInputCaret = (element, ctx) => {
     return element.selectionStart;
   };
 
+  const get = () => {
+    return {
+      element : element,
+      Start : element.selectionStart, 
+      End : element.selectionEnd
+    };
+  };
+
   /**
    * Set the position
    *
@@ -82,6 +90,7 @@ const createInputCaret = (element, ctx) => {
   };
 
   return {
+    get,
     getPos,
     setPos,
     getOffset,

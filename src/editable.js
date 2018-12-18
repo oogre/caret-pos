@@ -127,6 +127,25 @@ const createEditableCaret = (element, ctx) => {
   };
 
   /**
+   * Get the caret range
+   *
+   * @return {Range|null}
+   */
+  const get = () => {
+    if (!ctx.window.getSelection) {
+      return;
+    }
+    const sel = ctx.window.getSelection();
+    if(sel.rangeCount > 0){
+      let range = sel.getRangeAt(0); 
+      return {
+        element : range.startContainer,
+        Start : range.startOffset, 
+        End : range.endOffset
+      };
+    }
+  };
+  /**
    * Get the range
    *
    * @return {Range|null}
@@ -136,7 +155,6 @@ const createEditableCaret = (element, ctx) => {
       return;
     }
     const sel = ctx.window.getSelection();
-
     return sel.rangeCount > 0 ? sel.getRangeAt(0) : null;
   };
 
@@ -157,6 +175,7 @@ const createEditableCaret = (element, ctx) => {
   };
 
   return {
+    get,
     getPos,
     setPos,
     getPosition,

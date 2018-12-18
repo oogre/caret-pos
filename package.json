@@ -1,6 +1,6 @@
 {
   "name": "caret-pos",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Locate the current position of the caret. A plain JavaScript version of Caret.js.",
   "main": "lib/bundle/main.min.js",
   "module": "lib/esm2015/main.js",
@@ -17,7 +17,10 @@
     "caret",
     "cursor",
     "position",
-    "offset"
+    "offset",
+    "contenteditable",
+    "input",
+    "textarea"
   ],
   "files": [
     "lib",
@@ -27,10 +30,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/deshiknaves/caret-pos"
+    "url": "https://github.com/oogre/caret-pos"
   },
   "author": "Deshiknaves <deshi@deshiknaves.com> (https://github.com/deshiknaves/)",
   "contributors": [
+    "Vincent Evrard <vincent@ogre.be>  (https://github.com/oogre/)",
     "Aram Drevekenin <grimsniffer@gmail.com>  (https://github.com/imsnif/)"
   ],
   "license": "MIT",
@@ -44,12 +48,12 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-stage-1": "^6.24.1",
     "eslint-plugin-jasmine": "^2.9.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "jasmine": "^2.9.0",
-    "karma": "^2.0.0",
+    "karma": "^3.1.4",
     "karma-babel-preprocessor": "^7.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.1",
