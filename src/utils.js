@@ -67,3 +67,73 @@ export const getOffset = (element, ctx) => {
  * @return {bool} If it is an object
  */
 export const isObject = (value) => typeof value === 'object' && value !== null;
+
+
+/**
+ * Return contentEditable Parent
+ *
+ * @param {Element} element The DOM element
+ *
+ * @return {bool} If element is not a child of contentEditable
+ * @return {Element} contentEditable
+ */
+export const getContentEditableInParent = (element) => {
+  if(isContentEditable(element)){
+    return element;
+  }
+  if(element.parentElement){
+    return getContentEditableInParent(element.parentElement);  
+  }
+  return false;
+};
+
+/**
+ * Check if a DOM Element is an input field
+ *
+ * @param {Element} element  The DOM element
+ *
+ * @return {bool} If it is input or textarea
+ */
+export const isInputField = (element) => {
+  let nodeName = element.nodeName;
+  return nodeName == 'TEXTAREA' || nodeName == 'INPUT';
+};
+
+/**
+ * Check if a DOM Element is an input field or child of contentEditable
+ *
+ * @param {Element} element  The DOM element
+ *
+ * @return {bool} false it is not an input field nor a contentEditable child
+ * @return {Element} input field or the contentEditable parent
+ */
+export const checkTarget = (element) => {
+  if(!isInputField(element)){
+    element = getContentEditableInParent(element);
+  }
+  return element;
+};
+
+/**
+ * Get the text content of a DOM Element or a NodeList 
+ *
+ * @param {Element} element The DOM element
+ * @param {NodeList} elements The DOM element
+ *
+ * @return {string} the content text
+ */
+export const getContent = (element) => {
+  if(element instanceof NodeList) [].slice.call(element).reduce((memo, e) => memo += getContent(e), '');
+  if(! (element instanceof Element)) return '';
+  if(isInputField(element)) return element.value;
+  return element.innerHTML.replace(/(<([^>]+)>)/ig, ''); 
+};
+
+/**
+ * Check if a value is a functio 
+ *
+ * @param {any} value The value to check
+ *
+ * @return {bool} If it is a function
+ */
+export const isFunction = (fnc) => fnc && {}.toString.call(fnc) === '[object Function]';

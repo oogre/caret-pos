@@ -1,3 +1,10 @@
+
+import {
+  getContentEditableInParent,
+  //isContentEditable,
+  getContent
+} from './utils';
+
 /**
  * Create an Editable Caret
  * @param {Element} element The editable element
@@ -137,7 +144,13 @@ const createEditableCaret = (element, ctx) => {
     }
     const sel = ctx.window.getSelection();
     if(sel.rangeCount > 0){
-      let range = sel.getRangeAt(0); 
+      let range = sel.getRangeAt(0);
+      
+      let e = range.startContainer;
+      let ce = getContentEditableInParent(e);
+      let all = getContent(ce);
+      console.log(e, all, range);
+
       return {
         element : range.startContainer,
         Start : range.startOffset, 
