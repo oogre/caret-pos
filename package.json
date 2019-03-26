@@ -69,5 +69,7 @@
     "rollup-plugin-serve": "^0.4.2",
     "rollup-watch": "^4.3.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "htmlencode": "0.0.4"
+  }
 }
