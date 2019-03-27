@@ -127,8 +127,8 @@ export const getContent = (element) => {
   if(element instanceof NodeList) [].slice.call(element).reduce((memo, e) => memo += getContent(e), '');
   if(! (element instanceof Element)) return '';
   if(isInputField(element)) return element.value;
-  return Encoder.htmlDecode(element.innerHTML).replace(/(<([^>]+)>)/ig, ''); 
-
+  return Encoder.htmlDecode(element.innerText); 
+  //return Encoder.htmlDecode(element.innerHTML).replace(/(<([^>]+)>)/ig, ''); 
 };
 
 /**
