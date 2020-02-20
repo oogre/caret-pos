@@ -42,13 +42,13 @@ class CaretUtil{
   }
   forceSelection(first, last){
     if(this.target != null){
-        var newSelection = this.target.childNodes[0];
-        var selection = window.getSelection();
-        var range = document.createRange();
-        range.setStart(newSelection, first);
-        range.setEnd(newSelection, last);
-        selection.removeAllRanges();
-        selection.addRange(range);
+      var newSelection = this.target.childNodes[0];
+      var selection = window.getSelection();
+      var range = document.createRange();
+      range.setStart(newSelection, first);
+      range.setEnd(newSelection, last);
+      selection.removeAllRanges();
+      selection.addRange(range);
     }
   }
   disable(){
