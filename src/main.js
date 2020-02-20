@@ -40,25 +40,6 @@ class CaretUtil{
     if(!isFunction(fnc))throw new Error('onCaretOn must receive a function as parameter');
     this.caretOnHandler.push(fnc);
   }
-  forceSelection(target, first, last){
-    var newSelection = target.childNodes[0];
-    var selection = window.getSelection();
-    var range = document.createRange();
-    range.setStart(newSelection, first);
-    range.setEnd(newSelection, last);
-    selection.removeAllRanges();
-    selection.addRange(range);
-    this._triggerCaretChange({
-      type : 'CaretChange',
-      target : this.target,
-      caret : this.caret,
-      startAt : this.startAt, 
-      stopAt : this.stopAt,
-      content : getContent(this.target),
-      selectedText : this.getSelectedText(),
-      charBeforCaret : this.getCharBeforCaret()
-    });
-  }
   disable(){
     if(this.target != null){
       this.target.removeEventListener('blur', this._autoDisableHandler, true);
