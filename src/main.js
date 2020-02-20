@@ -111,6 +111,7 @@ export class Caret extends CaretUtil{
     let start = (target)=>{
       target.addEventListener('keyup', this._handleEvent.bind(this), true);
       target.addEventListener('mouseup', this._handleEvent.bind(this), true);
+      target.addEventListener('selectionchange', this._handleEvent.bind(this), true);
     };
    
     if(target instanceof NodeList){
