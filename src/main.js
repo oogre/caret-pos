@@ -48,6 +48,16 @@ class CaretUtil{
     range.setEnd(newSelection, last);
     selection.removeAllRanges();
     selection.addRange(range);
+    this._triggerCaretChange({
+      type : 'CaretChange',
+      target : this.target,
+      caret : this.caret,
+      startAt : this.startAt, 
+      stopAt : this.stopAt,
+      content : getContent(this.target),
+      selectedText : this.getSelectedText(),
+      charBeforCaret : this.getCharBeforCaret()
+    });
   }
   disable(){
     if(this.target != null){
